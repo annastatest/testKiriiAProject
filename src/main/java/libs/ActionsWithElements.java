@@ -44,7 +44,7 @@ public class ActionsWithElements {
     public boolean isElementDisplayed(WebElement webElement) {
         try {
             boolean state = webElement.isDisplayed();
-            logger.info("Is element displayed" + state);
+            logger.info("Is element displayed " + state);
             return state;
         } catch (Exception e) {
             logger.info("Is element displayed -> false");

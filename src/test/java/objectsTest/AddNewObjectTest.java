@@ -1,5 +1,6 @@
 package objectsTest;
 
+import libs.ExtraneousResources;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -19,14 +20,7 @@ public class AddNewObjectTest extends ParentTest {
         checkExpectedResult("Link not present",
                 objectsPage.IsGoToObjectLinkDisplayed());
 
-        objectsPage.checkStreetName("ВЕРБИЦЬКОГО АРХІТЕКТОРА ВУЛ.");
-
-
-//        String houseAndFlatNumber = "Київ, ВЕРБИЦЬКОГО АРХІТЕКТОРА ВУЛ., буд. 14В, кв. 188";
-//        checkExpectedResult1("Data is not expected",
-//                houseAndFlatNumber,
-//                objectsPage.);
+        objectsPage.checkStreetName("ВЕРБИЦЬКОГО АР...");
         }
-
 
 }

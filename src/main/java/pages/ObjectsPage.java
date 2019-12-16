@@ -43,6 +43,9 @@ public class ObjectsPage extends ParentPage {
     @FindBy(xpath = ".//div[@class = 'error-description']")
     private  WebElement messageAboutError;
 
+    @FindBy(xpath = ".//a[@href='https://www.gioc.kiev.ua/calc-subsidies/']")
+    private WebElement selectEditSettings;
+
     public void clickOnAddNewObjectButton() {
         actionsWithElements.clickOnElement(clickOnObjectButton);
     }
@@ -75,8 +78,7 @@ public class ObjectsPage extends ParentPage {
     }
 
     public  String getCurrentStreetName (){
-        String currentStreet = webDriver.findElement(By.xpath(".//div[@class = 'title']//span")).getText();
-        return currentStreet;
+        return webDriver.findElement(By.xpath(".//div[@class = 'title']//span[@title]")).getText();
     }
 
     public void checkStreetName(String streetName) {
@@ -94,6 +96,14 @@ public class ObjectsPage extends ParentPage {
     public boolean checkMessageAboutErrorIsDisplayed(){
         return actionsWithElements.isElementDisplayed(messageAboutError);
 
+    }
+
+    public void selectMenuFromOnLineCalc() {
+        WebElement element = webDriver.findElement(By.xpath(".//div[@class='calc-btn']"));
+        actionsWithElements.moveMouseOnElement(element);
+        WebElement element2 = webDriver.findElement(By.xpath(".//a[@href='https://www.gioc.kiev.ua/calc-subsidies/']"));
+        actionsWithElements.moveMouseOnElement(element2);
+        actionsWithElements.clickOnElement(selectEditSettings);
     }
 
 
