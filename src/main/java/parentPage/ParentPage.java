@@ -18,6 +18,7 @@ public class ParentPage {
 
     public ParentPage(WebDriver webDriver, String partUrl) {
         this.webDriver = webDriver;
+        baseUrl = configProperties.base_url();
         PageFactory.initElements(webDriver, this);
         actionsWithElements = new ActionsWithElements(webDriver);
         expectedUrl = baseUrl + partUrl;
