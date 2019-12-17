@@ -1,10 +1,13 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import parentPage.ParentPage;
+import ru.yandex.qatools.htmlelements.element.Link;
+import sun.awt.image.ImageWatched;
 
 public class EditUserSettingsPage extends ParentPage {
     public EditUserSettingsPage(WebDriver webDriver) {
@@ -17,11 +20,12 @@ public class EditUserSettingsPage extends ParentPage {
     private WebElement selectEditSettings;
     @FindBy(xpath = ".//input[@id = 'reg-fathername']")
     private WebElement fatherNameField;
-    @FindBy(xpath = ".//button")
-    private WebElement button;
+    @FindBy(tagName = "button")
+    private Link button;
     @FindBy(xpath = ".//h2[contains(text(), 'Зміни збережено')]")
     private WebElement message;
 
+    @Step
     public void selectMenuFromUsersProfile() {
         WebElement element = webDriver.findElement(By.xpath(".//div[@class = 'account-open']"));
         actionsWithElements.moveMouseOnElement(element);
@@ -30,10 +34,12 @@ public class EditUserSettingsPage extends ParentPage {
         actionsWithElements.clickOnElement(selectEditSettings);
     }
 
+    @Step
     public void enterFatherNameIntoField(String fatherName) {
         actionsWithElements.enterTextIntoInput(fatherNameField, fatherName);
     }
 
+    @Step
     public void clickOnSaveButton() {
         actionsWithElements.clickOnElement(button);
     }

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -41,16 +42,21 @@ public class ObjectsPage extends ParentPage {
     private WebElement goToObjectLinkIsPresent;
 
     @FindBy(xpath = ".//div[@class = 'error-description']")
-    private  WebElement messageAboutError;
+    private WebElement messageAboutError;
 
     @FindBy(xpath = ".//a[@href='https://www.gioc.kiev.ua/calc-subsidies/']")
     private WebElement selectEditSettings;
 
+    @FindBy(xpath = ".//div[@class='icon-remove']")
+    private WebElement clickDelete;
+
+    @Step
     public void clickOnAddNewObjectButton() {
         actionsWithElements.clickOnElement(clickOnObjectButton);
     }
 
-    public void fillFieldsOfNewObjects(String street, String housenumber, String flatnumber){
+    @Step
+    public void fillFieldsOfNewObjects(String street, String housenumber, String flatnumber) {
         actionsWithElements.enterTextIntoInput(streetField, street);
         actionsWithElements.clickOnElement(selectStreet);
         actionsWithElements.clickOnElement(clickOnHouseField);
@@ -59,25 +65,27 @@ public class ObjectsPage extends ParentPage {
         actionsWithElements.selectElementFromDropdownListByValue(clickOnFlatField, flatnumber);
     }
 
-    public void clickOnAddObject(){
+    @Step
+    public void clickOnAddObject() {
         actionsWithElements.clickOnElement(button);
     }
 
-    public void clickAndFillAuthField(String auth_key){
+    @Step
+    public void clickAndFillAuthField(String auth_key) {
         actionsWithElements.clickOnElement(clickOnAuthField);
         actionsWithElements.enterTextIntoInput(clickOnAuthField, auth_key);
     }
 
-    public boolean IsNewIconDisplayed(){
+    public boolean IsNewIconDisplayed() {
         return actionsWithElements.isElementDisplayed(iconIsPresent);
 
     }
 
-    public boolean IsGoToObjectLinkDisplayed(){
+    public boolean IsGoToObjectLinkDisplayed() {
         return actionsWithElements.isElementDisplayed(goToObjectLinkIsPresent);
     }
 
-    public  String getCurrentStreetName (){
+    public String getCurrentStreetName() {
         return webDriver.findElement(By.xpath(".//div[@class = 'title']//span[@title]")).getText();
     }
 
@@ -93,11 +101,12 @@ public class ObjectsPage extends ParentPage {
         }
     }
 
-    public boolean checkMessageAboutErrorIsDisplayed(){
+    public boolean checkMessageAboutErrorIsDisplayed() {
         return actionsWithElements.isElementDisplayed(messageAboutError);
 
     }
 
+    @Step
     public void selectMenuFromOnLineCalc() {
         WebElement element = webDriver.findElement(By.xpath(".//div[@class='calc-btn']"));
         actionsWithElements.moveMouseOnElement(element);
@@ -106,10 +115,8 @@ public class ObjectsPage extends ParentPage {
         actionsWithElements.clickOnElement(selectEditSettings);
     }
 
-
-//    public void checkNewObjeckIsAdded(String streetName, String houseNamber, String flatNamber){
-//        Assert.assertEquals();
-//    }
-
-
+    @Step
+    public void deleteObject() {
+        actionsWithElements.clickOnElement(clickDelete);
     }
+}

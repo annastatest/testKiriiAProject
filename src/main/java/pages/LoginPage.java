@@ -1,16 +1,18 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import parentPage.ParentPage;
+import ru.yandex.qatools.htmlelements.element.Link;
 
 public class LoginPage extends ParentPage implements IsUserPresent {
     @FindBy(id = "reg-name")
-    private WebElement regName;
+    private Link regName;
     @FindBy(tagName = "button")
-    private WebElement authorizationButton;
+    private Link authorizationButton;
     @FindBy(xpath = "//a[@class='first cabinet']")
     private WebElement enterToCabinet;
     @FindBy(xpath = ".//a[@class='btn green btn-login']")
@@ -26,6 +28,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         super(webDriver, "cabinet/login/");
     }
 
+    @Step
     public void openPage() {
         try {
             webDriver.get("https://www.gioc.kiev.ua/");
@@ -34,6 +37,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         }
     }
 
+    @Step
     public void enterToCabinet() {
         enterToCabinet.click();
         logger.info("'Enter to Cabinet' button should be clicked");
@@ -43,30 +47,36 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         actionsWithElements.enterTextIntoInput(regName, name);
     }
 
+    @Step
     public void clickOnLoginButton() {
         actionsWithElements.clickOnElement(loginButton);
         logger.info("Login button should be clicked");
     }
 
+    @Step
     public void clearEmail() {
         email.clear();
     }
 
+    @Step
     public void enterNumbersIntoTel(String phone) {
         actionsWithElements.enterTextIntoInput(inputPhone, phone);
         logger.info(phone + " was inputed into Phone");
     }
 
+    @Step
     public void enterPasswordIntoPassword(String password) {
         actionsWithElements.enterTextIntoInput(inputPassword, password);
         logger.info(password + " was inputed into Password");
     }
 
+    @Step
     public void clickAuthorization() {
         actionsWithElements.clickOnElement(authorizationButton);
         logger.info("Authorization completed");
     }
 
+    @Step
     public void fillLoginFormAndSubmitIt(String phone, String password) {
         openPage();
         enterToCabinet();
@@ -74,7 +84,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         clearEmail();
         enterNumbersIntoTel(phone);
         enterPasswordIntoPassword(password);
-       clickAuthorization();
+        clickAuthorization();
     }
 
     @Override
