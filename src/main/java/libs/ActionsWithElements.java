@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.htmlelements.element.TypifiedElement;
 
 public class ActionsWithElements {
     WebDriver webDriver;
@@ -35,10 +36,18 @@ public class ActionsWithElements {
             webDriverWait_10.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
             webDriverWait_10 = new WebDriverWait(webDriver, 10);
-            logger.error("Element was clicked");
+            logger.error("Element was clicked " + getElementName(webElement));
         } catch (Exception e) {
             stopTestAndPrintMessage();
         }
+    }
+
+    private String getElementName(WebElement webElement) {
+        String elementName = "";
+        if (webElement instanceof TypifiedElement) {
+            elementName = "'" + ((TypifiedElement) webElement).getName() + "'";
+        }
+        return elementName;
     }
 
     public boolean isElementDisplayed(WebElement webElement) {
