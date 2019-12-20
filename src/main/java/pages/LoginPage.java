@@ -26,14 +26,6 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         super(webDriver, "cabinet/login/");
     }
 
-    public void openPage() {
-        try {
-            webDriver.get("https://www.gioc.kiev.ua/");
-        } catch (Exception e) {
-            Assert.fail("Cannot work with browser");
-        }
-    }
-
     public void enterToCabinet() {
         enterToCabinet.click();
         logger.info("'Enter to Cabinet' button should be clicked");
@@ -68,7 +60,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
     }
 
     public void fillLoginFormAndSubmitIt(String phone, String password) {
-        openPage();
+        actionsWithElements.openPage("https://www.gioc.kiev.ua/");
         enterToCabinet();
         clickOnLoginButton();
         clearEmail();

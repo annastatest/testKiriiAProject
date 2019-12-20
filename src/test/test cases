@@ -1,0 +1,42 @@
+Test case 1, Authorization.
+
+1. Open browser Chrome
+2. Open page https://www.gioc.kiev.ua/cabinet/. - page is opened
+3. Enter "Увiйти" button
+4. Enter "Student" to "Фамилия" field.
+5. Enter "Anastasiia" to "Имя" field.
+6. Enter "0501636416" to "Телефон" field.
+7. Enter "AutoTests" to "Пароль" field - "******" is displayed in "Password" field
+8. Click on "Вход" button.
+9. Check that: user contains "Anastasiia"
+10. Close browser Chrome
+
+
+Test case 2, Make changes to user profile.
+Precondition: user is logger in.
+Click on "Налаштування" menu item
+Edd "U" in "По-батьковi" field
+Check message «Зміни збережено» is displayed
+
+Test case 3, Add new object.
+Precondition: user is logger in.
+1. Click on "Додати новий будинок" button
+2. Enter "ГРУШЕВСЬКОГО МИХАЙЛА ВУЛ." in Streel dropdown list
+3. Select "9" in "House" dropdown list
+4. Select "7" in "Flat" dropdown list
+5. Click on "Додати обект" button
+6. Enter valid data in "AuthKey" field
+7. Click on "Додати обект" button
+
+Test case 4 Add object with invalid value (negative test)
+Precondition: Rich 5 step of Test #3
+1. Enter "555555555555" in ""AuthKey" field
+2. Click on "Додати обект" button
+
+Test case 5 Online calc.
+Precondition: user is logger in.
+1. Click on "Oнлайн-калькулятор" button
+2. Select "Субсидии" in dropdown list
+3. Enter "150" in "Середньомісячний сукупний дохід усіх зареєстрованих членів сім’ї " field
+4. Enter "1" in "Кількість осіб зареєстрованих у житловому приміщенні" field
+5. Click on "Розрахувати" button

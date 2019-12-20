@@ -19,6 +19,22 @@ public class ActionsWithElements {
         webDriverWait_10 = new WebDriverWait(webDriver, 10);
     }
 
+    public void openPage(String url) {
+        try {
+            webDriver.get(url);
+        } catch (Exception e) {
+            Assert.fail("Cannot work with browser");
+        }
+    }
+
+    public void closePage() {
+        try {
+            webDriver.close();
+        } catch (Exception e) {
+            Assert.fail("Cannot work with browser");
+        }
+    }
+
     public void enterTextIntoInput(WebElement webElement, String text) {
         try {
             webElement.clear();

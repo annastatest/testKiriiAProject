@@ -1,6 +1,5 @@
 package objectsTest;
 
-import libs.ExtraneousResources;
 import org.junit.Test;
 import parentTest.ParentTest;
 
