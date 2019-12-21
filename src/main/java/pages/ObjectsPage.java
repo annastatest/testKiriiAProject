@@ -41,16 +41,21 @@ public class ObjectsPage extends ParentPage {
     private WebElement goToObjectLinkIsPresent;
 
     @FindBy(xpath = ".//div[@class = 'error-description']")
-    private  WebElement messageAboutError;
+    private WebElement messageAboutError;
 
     @FindBy(xpath = ".//a[@href='https://www.gioc.kiev.ua/calc-subsidies/']")
     private WebElement selectEditSettings;
 
     public void clickOnAddNewObjectButton() {
-        actionsWithElements.clickOnElement(clickOnObjectButton);
+        try {
+            actionsWithElements.clickOnElement(clickOnObjectButton);
+            logger.info("'AddNewObject' button was clicked");
+        } catch (Exception e) {
+            logger.info("'AddNewObject' button was not clicked");
+        }
     }
 
-    public void fillFieldsOfNewObjects(String street, String housenumber, String flatnumber){
+    public void fillFieldsOfNewObjects(String street, String housenumber, String flatnumber) {
         actionsWithElements.enterTextIntoInput(streetField, street);
         actionsWithElements.clickOnElement(selectStreet);
         actionsWithElements.clickOnElement(clickOnHouseField);
@@ -59,25 +64,25 @@ public class ObjectsPage extends ParentPage {
         actionsWithElements.selectElementFromDropdownListByValue(clickOnFlatField, flatnumber);
     }
 
-    public void clickOnAddObject(){
+    public void clickOnAddObject() {
         actionsWithElements.clickOnElement(button);
     }
 
-    public void clickAndFillAuthField(String auth_key){
+    public void clickAndFillAuthField(String auth_key) {
         actionsWithElements.clickOnElement(clickOnAuthField);
         actionsWithElements.enterTextIntoInput(clickOnAuthField, auth_key);
     }
 
-    public boolean IsNewIconDisplayed(){
+    public boolean IsNewIconDisplayed() {
         return actionsWithElements.isElementDisplayed(iconIsPresent);
 
     }
 
-    public boolean IsGoToObjectLinkDisplayed(){
+    public boolean IsGoToObjectLinkDisplayed() {
         return actionsWithElements.isElementDisplayed(goToObjectLinkIsPresent);
     }
 
-    public  String getCurrentStreetName (){
+    public String getCurrentStreetName() {
         return webDriver.findElement(By.xpath(".//div[@class = 'title']//span[@title]")).getText();
     }
 
@@ -93,7 +98,7 @@ public class ObjectsPage extends ParentPage {
         }
     }
 
-    public boolean checkMessageAboutErrorIsDisplayed(){
+    public boolean checkMessageAboutErrorIsDisplayed() {
         return actionsWithElements.isElementDisplayed(messageAboutError);
 
     }
@@ -105,11 +110,4 @@ public class ObjectsPage extends ParentPage {
         actionsWithElements.moveMouseOnElement(element2);
         actionsWithElements.clickOnElement(selectEditSettings);
     }
-
-
-//    public void checkNewObjeckIsAdded(String streetName, String houseNamber, String flatNamber){
-//        Assert.assertEquals();
-//    }
-
-
-    }
+}

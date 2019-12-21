@@ -13,6 +13,5 @@ public class AddNewObjectWithInvalidAuthKeyTest extends ParentTest {
         objectsPage.clickAndFillAuthField("5555-5555-5555");
         objectsPage.clickOnAddObject();
         objectsPage.checkMessageAboutErrorIsDisplayed();
-
     }
 }

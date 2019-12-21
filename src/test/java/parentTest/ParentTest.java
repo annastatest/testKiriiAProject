@@ -41,16 +41,4 @@ public class ParentTest {
     protected void checkExpectedResult(String message, boolean actualResult) {
         Assert.assertEquals(message, true, actualResult);
     }
-
-    protected void checkExpectedResult1(String message, String expectedResult, String actualResult) {
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    protected void checkExpectedResult1(String message, Integer expectedResult, Integer actualResult) {
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-//    protected void checkExpectedResult (String message, double expectedResult, double actualResult) {
-//        Assert.assertEquals(message, expectedResult, actualResult);
-//    }
 }

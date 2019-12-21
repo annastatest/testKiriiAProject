@@ -1,6 +1,5 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,8 +26,12 @@ public class LoginPage extends ParentPage implements IsUserPresent {
     }
 
     public void enterToCabinet() {
-        enterToCabinet.click();
-        logger.info("'Enter to Cabinet' button should be clicked");
+        try {
+            enterToCabinet.click();
+            logger.info("Button 'Enter to Cabinet' is clicked");
+        } catch (Exception e) {
+            logger.info("'Enter to Cabinet' button should be clicked");
+        }
     }
 
     public void enterRegName(String name) {
@@ -36,8 +39,12 @@ public class LoginPage extends ParentPage implements IsUserPresent {
     }
 
     public void clickOnLoginButton() {
-        actionsWithElements.clickOnElement(loginButton);
-        logger.info("Login button should be clicked");
+        try {
+            actionsWithElements.clickOnElement(loginButton);
+            logger.info("Login button is clicked");
+        } catch (Exception e) {
+            logger.info("Login button should be clicked");
+        }
     }
 
     public void clearEmail() {
@@ -45,6 +52,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
     }
 
     public void enterNumbersIntoTel(String phone) {
+
         actionsWithElements.enterTextIntoInput(inputPhone, phone);
         logger.info(phone + " was inputed into Phone");
     }
@@ -55,8 +63,12 @@ public class LoginPage extends ParentPage implements IsUserPresent {
     }
 
     public void clickAuthorization() {
-        actionsWithElements.clickOnElement(authorizationButton);
-        logger.info("Authorization completed");
+        try {
+            actionsWithElements.clickOnElement(authorizationButton);
+            logger.info("Authorization completed");
+        } catch (Exception e) {
+            logger.info("Authorization was not completed");
+        }
     }
 
     public void fillLoginFormAndSubmitIt(String phone, String password) {
@@ -66,7 +78,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         clearEmail();
         enterNumbersIntoTel(phone);
         enterPasswordIntoPassword(password);
-       clickAuthorization();
+        clickAuthorization();
     }
 
     @Override

@@ -14,12 +14,11 @@ public class AddNewObjectTest extends ParentTest {
         objectsPage.clickOnAddObject();
 
         checkExpectedResult("Icon is not present",
-            objectsPage.IsNewIconDisplayed());
+                objectsPage.IsNewIconDisplayed());
 
         checkExpectedResult("Link not present",
                 objectsPage.IsGoToObjectLinkDisplayed());
 
         objectsPage.checkStreetName("ВЕРБИЦЬКОГО АР...");
-        }
-
+    }
 }

@@ -43,6 +43,7 @@ public class ActionsWithElements {
             logger.info(text + " element was inputted");
         } catch (Exception e) {
             stopTestAndPrintMessage();
+            logger.info(text + " element was not inputted");
         }
     }
 
@@ -54,6 +55,7 @@ public class ActionsWithElements {
             logger.error("Element was clicked");
         } catch (Exception e) {
             stopTestAndPrintMessage();
+            logger.error("Element was not clicked");
         }
     }
 

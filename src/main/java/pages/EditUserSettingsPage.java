@@ -31,11 +31,21 @@ public class EditUserSettingsPage extends ParentPage {
     }
 
     public void enterFatherNameIntoField(String fatherName) {
-        actionsWithElements.enterTextIntoInput(fatherNameField, fatherName);
+        try {
+            actionsWithElements.enterTextIntoInput(fatherNameField, fatherName);
+            logger.info("FatherName was entered");
+        } catch (Exception e) {
+            logger.info("FatherName was not entered");
+        }
     }
 
     public void clickOnSaveButton() {
-        actionsWithElements.clickOnElement(button);
+        try {
+            actionsWithElements.clickOnElement(button);
+            logger.info("'Save button' was clicked");
+        } catch (Exception e) {
+            logger.info("'Save button' was not clicked");
+        }
     }
 
     public void messageIsDisplayed() {
