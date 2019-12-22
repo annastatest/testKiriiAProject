@@ -1,10 +1,14 @@
 package objectsTest;
 
-import libs.ExtraneousResources;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.Test;
 import parentTest.ParentTest;
 
 public class AddNewObjectTest extends ParentTest {
+    @Description("Add 1 new object with valid data")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void addNewObject() {
         loginPage.fillLoginFormAndSubmitIt("380503810022", "AutoTests");
@@ -15,12 +19,11 @@ public class AddNewObjectTest extends ParentTest {
         objectsPage.clickOnAddObject();
 
         checkExpectedResult("Icon is not present",
-            objectsPage.IsNewIconDisplayed());
+                objectsPage.IsNewIconDisplayed());
 
         checkExpectedResult("Link not present",
                 objectsPage.IsGoToObjectLinkDisplayed());
 
         objectsPage.checkStreetName("ВЕРБИЦЬКОГО АР...");
-        }
-
+    }
 }

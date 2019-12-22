@@ -19,6 +19,22 @@ public class ActionsWithElements {
         webDriverWait_10 = new WebDriverWait(webDriver, 10);
     }
 
+    public void openPage(String url) {
+        try {
+            webDriver.get(url);
+        } catch (Exception e) {
+            Assert.fail("Cannot work with browser");
+        }
+    }
+
+    public void closePage() {
+        try {
+            webDriver.close();
+        } catch (Exception e) {
+            Assert.fail("Cannot work with browser");
+        }
+    }
+
     public void enterTextIntoInput(WebElement webElement, String text) {
         try {
             webElement.clear();
@@ -27,6 +43,7 @@ public class ActionsWithElements {
             logger.info(text + " element was inputted");
         } catch (Exception e) {
             stopTestAndPrintMessage();
+            logger.info(text + " element was not inputted");
         }
     }
 
@@ -35,9 +52,10 @@ public class ActionsWithElements {
             webDriverWait_10.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
             webDriverWait_10 = new WebDriverWait(webDriver, 10);
-            logger.error("Element was clicked");
+            logger.info("Element was clicked");
         } catch (Exception e) {
             stopTestAndPrintMessage();
+            logger.info("Element was not clicked");
         }
     }
 

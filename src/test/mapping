@@ -1,0 +1,43 @@
+# Authorization
+
+Authorization.loginPage.enterToCabinet=xpath("//a[@class='first cabinet']")
+Authorization.loginPage.loginButton=xpath("//a[@class='btn green btn-login']")
+Authorization.loginPage.inputPhone=xpath(".//input[@id='login-phone']")
+Authorization.loginPage.inputPassword=xpath(".//input[@id='reg-password']")
+Authorization.loginPage.authorizationButton=xpath(".//button")
+Authorization.homePage.correctName.check=xpath(".//div[@class='username']/span")
+
+#Edit profile
+
+Edit.loginPage.openAccount=xpath("".//div[@class = 'account-open']")
+Edit.loginPage.selectEditSettings=xpath(".//*/div[@class = 'item settings with-border']")
+Edit.EditUserSettingsPage.fatherNameField=xpath(".//input[@id='reg-fathername']")
+Edit.EditUserSettingsPage.button=xpath(".//button")
+Edit.EditUserSettingsPage.message=xpath(".//h2[contains(text(), 'Зміни збережено')]")
+Edit.check.changes=xpath(".//input[@id='reg-fathername' and @value='U']")
+
+#Add object
+
+Add.loginPage.clickOnObjectButton=xpath(".//div[@class = 'btn green bold big add-new']")
+Add.ObjectsPage.streetField=xpath(".//input[@id = 'add_obj_street']")
+Add.ObjectsPage.selectStreet=xpath(".//a[@class = 'ui-corner-all']")
+Add.ObjectsPage.clickOnHouseField=xpath(".//select[@id='add_obj_house']")
+Add.ObjectsPage.clickOnFlatField=xpath(".//select[@id = 'add_obj_flat']")
+Add.ObjectsPage.button=xpath(.//button[@class = 'btn green bold']")
+Add.ObjectsPage.clickOnAuthField=xpath(".//input[@id = 'add_obj_auth_key']")
+Add.ObjectsPage.button=xpath(.//button[@class = 'btn green bold']")
+Add.loginPage.iconIsPresent=xpath(".//div[@class = 'title']//div[@class = 'icon']")
+Add.loginPage.goToObjectLinkIsPresent=xpath(".//a[contains(text(),'Перейти до об’єкту')]")
+
+
+#Add invalid object
+
+Invalid.ObjectsPage.clickOnAuthField=xpath(".//input[@id = 'add_obj_auth_key']")
+Invalid.ObjectsPage.messageAboutError=xpath(".//div[@class = 'error-description']")
+
+#Online calc option
+Calc.loginPage.selectEditSettings=xpath(".//a[@href='https://www.gioc.kiev.ua/calc-subsidies/']")
+//Calc.Calc_subsidiesPage.=xpath(".//div[@class='calc-btn']")
+Calc.Calc_subsidiesPage.dohod=xpath(".//input[@id='DOHOD']")
+Cacl.Calc_subsidiesPage.calcButton=xpath(".//button")
+Calc.check=xpath(".//td[contains(text(),'Обов’язкова плата за ЖКП')]//following-sibling::td")
