@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.stream.Collectors;
 
-public class Calc_subsidiesPage extends ParentPage implements IsUserPresent {
+public class Calc_subsidiesPage extends ParentPage {
 
     @FindBy(xpath = ".//input[@id='DOHOD']")
     private WebElement dohod;
@@ -39,6 +40,7 @@ public class Calc_subsidiesPage extends ParentPage implements IsUserPresent {
         return wageMin;
     }
 
+    @Step
     public void fillFieldsAndClickButton(String income, String residents) {
         actionsWithElements.enterTextIntoInput(dohod, income);
         actionsWithElements.enterTextIntoInput(residentsAmount, residents);
@@ -56,36 +58,17 @@ public class Calc_subsidiesPage extends ParentPage implements IsUserPresent {
 
     public String actualSubsidy() {
         String subside = webDriver.findElement(By.xpath(".//td[contains(text(),'Обов’язкова плата за ЖКП')]//following-sibling::td/b[@class='green']")).getText();
-        String res = subside.chars()
-                .filter(c -> !Character.isLetter(c))
-                .mapToObj(c -> String.valueOf((char) c))
-                .collect(Collectors.joining()).replaceAll(" ", "");
-        return res;
+//        String res = subside.chars()
+//                .filter(c -> !Character.isLetter(c))
+//                .mapToObj(c -> String.valueOf((char) c))
+//                .collect(Collectors.joining()).replaceAll(" ", "");
+        return subside.replace(" грн", "").trim();
     }
 
+    @Step
     public void checkSubSum(String expectedSubsidy, String actualSubsidy) {
-        try {
-            Assert.assertEquals("Wrong sum",
-                    expectedSubsidy,
-                    actualSubsidy);
-            logger.info(expectedSubsidy + " is equals " + actualSubsidy());
-        } catch (Exception e) {
-            logger.info(expectedSubsidy + " is not equals " + actualSubsidy());
-        }
-    }
-
-    @Override
-    public boolean IsAvatarPresent() {
-        return true;
-    }
-
-    @Override
-    public boolean IsUserFirstamePresent() {
-        return true;
-    }
-
-    @Override
-    public boolean IsUserLastnamePresent() {
-        return true;
+        Assert.assertEquals("Wrong sum",
+                expectedSubsidy,
+                actualSubsidy);
     }
 }

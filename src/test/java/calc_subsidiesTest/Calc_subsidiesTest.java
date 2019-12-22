@@ -1,10 +1,16 @@
 package calc_subsidiesTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
 public class Calc_subsidiesTest extends ParentTest {
-
+    @Description("Take value of 'living wage' from another site, substitute the value in the formula and verify the result obtained with the result on the site 'gioc")
+    @Severity(SeverityLevel.CRITICAL)
+    @Ignore
     @Test
     public void subsidyAmount() {
         loginPage.fillLoginFormAndSubmitIt("380503810022", "AutoTests");

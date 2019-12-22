@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class EditUserSettingsPage extends ParentPage {
     @FindBy(xpath = ".//h2[contains(text(), 'Зміни збережено')]")
     private WebElement message;
 
+    @Step
     public void selectMenuFromUsersProfile() {
         WebElement element = webDriver.findElement(By.xpath(".//div[@class = 'account-open']"));
         actionsWithElements.moveMouseOnElement(element);
@@ -30,6 +32,7 @@ public class EditUserSettingsPage extends ParentPage {
         actionsWithElements.clickOnElement(selectEditSettings);
     }
 
+    @Step
     public void enterFatherNameIntoField(String fatherName) {
         try {
             actionsWithElements.enterTextIntoInput(fatherNameField, fatherName);
@@ -39,6 +42,7 @@ public class EditUserSettingsPage extends ParentPage {
         }
     }
 
+    @Step
     public void clickOnSaveButton() {
         try {
             actionsWithElements.clickOnElement(button);
@@ -52,6 +56,7 @@ public class EditUserSettingsPage extends ParentPage {
         actionsWithElements.isElementDisplayed(message);
     }
 
+    @Step
     public void checkMessageIsDisplayed() {
         try {
             messageIsDisplayed();

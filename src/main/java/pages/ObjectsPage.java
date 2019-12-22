@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +47,7 @@ public class ObjectsPage extends ParentPage {
     @FindBy(xpath = ".//a[@href='https://www.gioc.kiev.ua/calc-subsidies/']")
     private WebElement selectEditSettings;
 
+    @Step
     public void clickOnAddNewObjectButton() {
         try {
             actionsWithElements.clickOnElement(clickOnObjectButton);
@@ -55,6 +57,7 @@ public class ObjectsPage extends ParentPage {
         }
     }
 
+    @Step
     public void fillFieldsOfNewObjects(String street, String housenumber, String flatnumber) {
         actionsWithElements.enterTextIntoInput(streetField, street);
         actionsWithElements.clickOnElement(selectStreet);
@@ -64,20 +67,24 @@ public class ObjectsPage extends ParentPage {
         actionsWithElements.selectElementFromDropdownListByValue(clickOnFlatField, flatnumber);
     }
 
+    @Step
     public void clickOnAddObject() {
         actionsWithElements.clickOnElement(button);
     }
 
+    @Step
     public void clickAndFillAuthField(String auth_key) {
         actionsWithElements.clickOnElement(clickOnAuthField);
         actionsWithElements.enterTextIntoInput(clickOnAuthField, auth_key);
     }
 
+    @Step
     public boolean IsNewIconDisplayed() {
         return actionsWithElements.isElementDisplayed(iconIsPresent);
 
     }
 
+    @Step
     public boolean IsGoToObjectLinkDisplayed() {
         return actionsWithElements.isElementDisplayed(goToObjectLinkIsPresent);
     }
@@ -86,6 +93,7 @@ public class ObjectsPage extends ParentPage {
         return webDriver.findElement(By.xpath(".//div[@class = 'title']//span[@title]")).getText();
     }
 
+    @Step
     public void checkStreetName(String streetName) {
         try {
             Assert.assertEquals(
@@ -98,11 +106,12 @@ public class ObjectsPage extends ParentPage {
         }
     }
 
-    public boolean checkMessageAboutErrorIsDisplayed() {
-        return actionsWithElements.isElementDisplayed(messageAboutError);
-
+    @Step
+    public void checkMessageAboutErrorIsDisplayed() {
+        Assert.assertTrue(actionsWithElements.isElementDisplayed(messageAboutError));
     }
 
+    @Step
     public void selectMenuFromOnLineCalc() {
         WebElement element = webDriver.findElement(By.xpath(".//div[@class='calc-btn']"));
         actionsWithElements.moveMouseOnElement(element);

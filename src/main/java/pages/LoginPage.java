@@ -1,11 +1,12 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import parentPage.ParentPage;
 
-public class LoginPage extends ParentPage implements IsUserPresent {
+public class LoginPage extends ParentPage {
     @FindBy(id = "reg-name")
     private WebElement regName;
     @FindBy(tagName = "button")
@@ -71,6 +72,7 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         }
     }
 
+    @Step
     public void fillLoginFormAndSubmitIt(String phone, String password) {
         actionsWithElements.openPage("https://www.gioc.kiev.ua/");
         enterToCabinet();
@@ -79,20 +81,5 @@ public class LoginPage extends ParentPage implements IsUserPresent {
         enterNumbersIntoTel(phone);
         enterPasswordIntoPassword(password);
         clickAuthorization();
-    }
-
-    @Override
-    public boolean IsAvatarPresent() {
-        return false;
-    }
-
-    @Override
-    public boolean IsUserFirstamePresent() {
-        return false;
-    }
-
-    @Override
-    public boolean IsUserLastnamePresent() {
-        return false;
     }
 }

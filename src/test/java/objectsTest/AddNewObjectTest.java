@@ -1,9 +1,14 @@
 package objectsTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.Test;
 import parentTest.ParentTest;
 
 public class AddNewObjectTest extends ParentTest {
+    @Description("Add 1 new object with valid data")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void addNewObject() {
         loginPage.fillLoginFormAndSubmitIt("380503810022", "AutoTests");

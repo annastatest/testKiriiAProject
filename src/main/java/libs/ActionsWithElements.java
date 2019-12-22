@@ -52,10 +52,10 @@ public class ActionsWithElements {
             webDriverWait_10.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
             webDriverWait_10 = new WebDriverWait(webDriver, 10);
-            logger.error("Element was clicked");
+            logger.info("Element was clicked");
         } catch (Exception e) {
             stopTestAndPrintMessage();
-            logger.error("Element was not clicked");
+            logger.info("Element was not clicked");
         }
     }
 
